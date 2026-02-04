@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER STATION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">⚡ WEATHER STATION</div>
+            <div class="search-container">
+                <input type="text" id="cityInput" class="search-input" placeholder="ENTER CITY NAME...">
+                <button id="searchBtn" class="btn">SEARCH</button>
+            </div>
+            <div class="controls">
+                <button id="locationBtn" class="btn btn-secondary">📍 USE LOCATION</button>
+                <button id="unitToggle" class="btn btn-secondary">°F / °C</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="favorites" class="favorites" style="display: none;">
+            <div class="favorites-title">⭐ SAVED LOCATIONS</div>
+            <div id="favoritesGrid" class="favorites-grid"></div>
+        </div>
+
+        <div id="loading" class="loading">LOADING WEATHER DATA</div>
+        <div id="error" class="error" style="display: none;"></div>
+        <div id="weatherContent" style="display: none;">
+            <div class="main-grid">
+                <div class="current-weather">
+                    <div class="location-name" id="locationName">—</div>
+                    <div class="current-date" id="currentDate">—</div>
+                    <div class="temp-display">
+                        <div class="main-temp" id="mainTemp">—</div>
+                        <div class="weather-icon" id="weatherIcon">—</div>
+                    </div>
+                    <div class="weather-desc" id="weatherDesc">—</div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Feels Like</div>
+                            <div class="detail-value" id="feelsLike">—</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Humidity</div>
+                            <div class="detail-value" id="humidity">—</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Wind Speed</div>
+                            <div class="detail-value" id="windSpeed">—</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Pressure</div>
+                            <div class="detail-value" id="pressure">—</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Visibility</div>
+                            <div class="detail-value" id="visibility">—</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Cloud Cover</div>
+                            <div class="detail-value" id="clouds">—</div>
+                        </div>
+                    </div>
+                    <button id="addFavorite" class="btn" style="margin-top: 1.5rem;">⭐ SAVE LOCATION</button>
+                </div>
+
+                <div id="alertsPanel" class="alerts-panel" style="display: none;">
+                    <div class="alerts-title">⚠️ WEATHER ALERTS</div>
+                    <div id="alertsContent"></div>
+                </div>
+            </div>
+
+            <div class="hourly-forecast">
+                <div class="section-title">24-HOUR FORECAST</div>
+                <div class="hourly-scroll" id="hourlyForecast"></div>
+            </div>
+
+            <div class="forecast-grid" id="forecastGrid"></div>
+
+            <div class="additional-info">
+                <div class="info-card">
+                    <div class="info-card-title">🌅 SUN & MOON</div>
+                    <div class="sun-times">
+                        <div class="sun-time-item">
+                            <div class="sun-time-label">Sunrise</div>
+                            <div class="sun-time-value" id="sunrise">—</div>
+                        </div>
+                        <div class="sun-time-item">
+                            <div class="sun-time-label">Sunset</div>
+                            <div class="sun-time-value" id="sunset">—</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">☀️ UV INDEX</div>
+                    <div id="uvInfo">
+                        <div style="font-size: 3rem; font-weight: 700; margin: 1rem 0;" id="uvValue">—</div>
+                        <div id="uvLevel" style="font-weight: 600; text-transform: uppercase;">—</div>
+                        <div class="uv-bar">
+                            <div class="uv-indicator" id="uvIndicator"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-title">💨 AIR QUALITY</div>
+                    <div id="aqiInfo">
+                        <div style="font-size: 3rem; font-weight: 700; margin: 1rem 0;" id="aqiValue">—</div>
+                        <div class="aqi-indicator" id="aqiLevel">LOADING...</div>
+                        <div style="margin-top: 1rem; font-size: 0.9rem;" id="aqiDesc">—</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>WEATHER STATION | POWERED BY OPENWEATHERMAP API</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">Data updates every 10 minutes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
